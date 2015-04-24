@@ -1,0 +1,374 @@
+/* ------------------------------------
+  STYLESHEET
+  ------------------------------------- */
+
+/* --- base --- */
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font: 14px sans-serif;
+  background: #333;
+  color: #fff;
+}
+
+a {
+  cursor: pointer;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+/* --- overriding ie10 defaults for range inputs --- */
+
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+  background: -ms-linear-gradient(#000, #333);
+}
+
+input[type="range"]::-ms-thumb {
+  width: .75em;
+  height: .75em;
+  background: -ms-linear-gradient(#bada55, #788c37);
+  border: none;
+  border-radius: 50%;
+}
+
+input[type="range"]::-ms-track {
+  color: transparent;
+}
+
+/* --- layout --- */
+
+.remote-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.page-wrapper {
+  min-height: 100%;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.control-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1em 0;
+}
+
+.ui-container {
+  position: relative;
+  padding: .5em 1em;
+  margin: 1em 0;
+}
+
+.ui-container:before,
+.ui-container:after {
+}
+
+.ui-container:after {
+  clear: both;
+}
+
+/* --- pages --- */
+
+// Search is initially hidden
+#search {
+  display: none;
+  overflow: auto;
+}
+
+#artist-detail {
+  display: none;
+  overflow: auto;
+}
+
+#album-detail {
+  display: none;
+  overflow: auto;
+}
+
+#search {
+  display: none;
+  overflow: auto;
+}
+
+
+/* --- page controls --- */
+.page-nav {
+  padding: 0.2em;
+}
+
+.open-search {
+  float: right;
+}
+
+.open-remote {
+  float: right;
+}
+
+.go-back {
+  float: left;
+}
+
+/* --- time controls --- */
+
+.time input[type="range"] {
+  display: block;
+  width: 65%;
+  top: -.5em;
+  margin: 0 auto;
+}
+
+.played-time,
+.duration {
+  position: absolute;
+  display: inline-block;
+  width: 20%;
+  padding: .25em;
+  top: 0;
+  background: rgba(0,0,0,.3);
+  border-radius: 1em;
+  text-align: center;
+  z-index: 1;
+}
+
+.played-time {
+  left: 0;
+}
+
+.duration {
+  right: 0;
+}
+
+/* --- state controls --- */
+
+.button {
+  padding: .5em 1em;
+  margin: 0;
+  background: -webkit-linear-gradient(#bada55, #788c37);
+  background: -moz-linear-gradient(#bada55, #788c37);
+  background: -o-linear-gradient(#bada55, #788c37);
+  background: -ms-linear-gradient(#bada55, #788c37);
+  background: linear-gradient(#bada55, #788c37);
+  border-left: 1px solid rgba(255,255,255,.3);
+  border-right: 1px solid rgba(0,0,0,.3);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.5), inset 0 -2px 0 rgba(0,0,0,.3);
+  color: rgba(0,0,0,0.5);
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+.control-button {
+  display: block;
+  float: left;
+  width: 33%;
+}
+
+.previous {
+  border-left: none;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+.next {
+  border-right: none;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+.nav-button {
+  background-image:  -webkit-linear-gradient(bottom, hsla(0.0, 0.0%, 20.0%, 1) 0.0%, hsla(0.0, 0.0%, 10.0%, 1) 50.5%, hsla(0.0, 0.0%, 20.0%, 1) 50.7%, hsla(0.0, 0.0%, 30.0%, 1) 100.0% );
+  background-image:          linear-gradient(to top, hsla(0.0, 0.0%, 20.0%, 1) 0.0%, hsla(0.0, 0.0%, 10.0%, 1) 50.5%, hsla(0.0, 0.0%, 20.0%, 1) 50.7%, hsla(0.0, 0.0%, 30.0%, 1) 100.0% );
+
+  border: 1px solid hsla(0.0, 0.0%, 0.0%, 1);
+  border-radius: 5px 5px 5px 5px;
+
+  color: hsla(0.0, 0.0%, 100.0%, 1);
+  font-weight: bold;
+  text-shadow: 0px -1px 0px hsla(0.0, 0.0%, 0.0%, 1);
+  text-align: center;
+
+  box-shadow: 0px 1px 2px hsla(0.0, 0.0%, 0.0%, 0.50), inset 0px 1px 0px hsla(0.0, 0.0%, 100.0%, 0.15);
+}
+
+.nav-button:hover {
+  background-image:  -webkit-linear-gradient(bottom, hsla(0.0, 0.0%, 25.0%, 1) 0.0%, hsla(0.0, 0.0%, 15.0%, 1) 50.5%, hsla(0.0, 0.0%, 25.0%, 1) 50.7%, hsla(0.0, 0.0%, 35.0%, 1) 100.0% );
+  background-image:          linear-gradient(to top, hsla(0.0, 0.0%, 25.0%, 1) 0.0%, hsla(0.0, 0.0%, 15.0%, 1) 50.5%, hsla(0.0, 0.0%, 25.0%, 1) 50.7%, hsla(0.0, 0.0%, 35.0%, 1) 100.0% );
+}
+
+.hovering-button {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+}
+
+#current-volume {
+  width: 90%;
+  margin-left: 1em;
+  height: 16px;
+}
+
+.volume-icon {
+  height: 16px;
+  width: 16px;
+  float: left;
+}
+
+/* --- remote appearance --- */
+
+.remote-wrapper {
+  background: -webkit-linear-gradient(#555, #333);
+  background: -moz-linear-gradient(#555, #333);
+  background: -o-linear-gradient(#555, #333);
+  background: -ms-linear-gradient(#555, #333);
+  background: linear-gradient(#555, #333);
+}
+
+.control-wrapper {
+  background: -webkit-linear-gradient(rgba(0,0,0,.5), #333 35%);
+  background: -moz-linear-gradient(rgba(0,0,0,.5), #333 35%);
+  background: -o-linear-gradient(rgba(0,0,0,.5), #333 35%);
+  background: -ms-linear-gradient(rgba(0,0,0,.5), #333 35%);
+  background: linear-gradient(rgba(0,0,0,.5), #333 35%);
+}
+
+.ui-container {
+  clear: both;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-slider-thumb,
+input[type="range"]::-o-slider-thumb,
+input[type="range"]::slider-thumb {
+  width: 25px;
+  height: 25px;
+}
+
+/* --- artist, title, album cover --- */
+
+.artwork {
+  display: block;
+  width: 100%;
+}
+
+.artist,
+.song-title {
+  text-align: center;
+}
+
+.artist {
+  font-weight: bold;
+}
+
+/* --- search & search results --- */
+
+#new-search {
+  margin-top: 0.5em;
+  text-align: center;
+}
+#new-search input {
+  font-size: 1.2em;
+}
+
+#search-results h3 {
+  padding: 0.5em;
+}
+
+#tracks-search-results a,
+#albums-search-results a,
+#artists-search-results a,
+#artist-detail-albums a,
+#album-detail-tracks a {
+  display: block;
+  color: #bada55;
+  background: -webkit-linear-gradient(#555, #333);
+  background: linear-gradient(#555, #333);
+  padding: 5px;
+}
+
+#tracks-search-results a:hover,
+#albums-search-results a:hover,
+#artists-search-results a:hover,
+#artist-detail-albums a:hover,
+#album-detail-tracks a:hover {
+  color: #CEE486;
+}
+
+#artist-detail-artist, #album-detail-album {
+  margin-top: 0.5em;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.show-more {
+  margin: 0.5em 0em 1em 0em;
+  color: #90B027;
+  background: none !important;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.show-more:hover {
+  color: #bada55;
+}
+
+.no-search-result {
+  color: #808080;
+  text-align: center;
+}
+
+/* --- media query to avoid ugly vertical scaling --- */
+
+@media screen and (min-height: 580px) {
+
+  .remote-wrapper {
+    max-height: 700px;
+  }
+}
+
+/* --- media query for larger than common mobile screens --- */
+
+@media screen and (min-width: 480px) {
+
+  html {
+    background: #e1e1e1;
+  }
+
+  .remote-wrapper {
+    width: 380px;
+    margin: 1em;
+    border: .5em solid rgba(0,0,0,.2);
+    border-radius: 1em;
+    box-shadow: 0 0 10px #666;
+    overflow: hidden;
+  }
+}
