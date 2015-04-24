@@ -6,6 +6,8 @@ Monodify allows you to control (pre-build 1.0) Spotify from a browser. Currently
 by talking to Spotify via its AppleScript interface, so only OS X is supported
 at the moment. Any Spotify version after 0.9.15.27 will not work.
 
+![Screenshot](http://i.imgur.com/puLukgj.png)
+
 ## Installation
 
 This assumes you already have Spotify installed
