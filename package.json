@@ -9,7 +9,7 @@
     "test": "test"
   },
   "dependencies": {
-    "socket.io": "~0.9.14",
+    "socket.io": "^0.9.17",
     "spotify-node-applescript": "~0.2.1"
   },
   "devDependencies": {
