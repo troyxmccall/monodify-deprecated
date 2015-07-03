@@ -27,8 +27,8 @@ $ rm -f ~/Library/Application\ Support/Spotify/Spotify_new.archive.sig && touch 
 $ git clone https://github.com/troyxmccall/monodify.git
 $ cd monodify
 $ npm install -g grunt-cli
-$ npm install
-$ npm start
+$ npm update
+$ sudo npm start
 $ open http://localhost:3333
 ```
 
