@@ -14,50 +14,50 @@ io.enable('browser client gzip');
 io.set('log level', 0);
 
 var mimeTypes = {
-    'css': 'text/css',
-    'html': 'text/html;charset=UTF-8',
-    'ico': 'image/x-icon',
-    'js': 'text/javascript',
-    'png': 'image/png'
+  'css': 'text/css',
+  'html': 'text/html;charset=UTF-8',
+  'ico': 'image/x-icon',
+  'js': 'text/javascript',
+  'png': 'image/png'
 };
 
 function handleRequest(req, res) {
-    var fileName = req.url === '/' ? 'index.html' : req.url.split('/').splice(-1)[0];
-    var filePath = __dirname + '/public/' + fileName;
+  var fileName = req.url === '/' ? 'index.html' : req.url.split('/').splice(-1)[0];
+  var filePath = __dirname + '/public/' + fileName;
 
-    fs.exists(filePath, function(exists) {
-        if (!exists) {
-            res.writeHead(404);
-            res.end("404 Not Found\n");
-        } else {
-            var extension = filePath.split('.').splice(-1)[0];
+  fs.exists(filePath, function(exists) {
+    if (!exists) {
+      res.writeHead(404);
+      res.end("404 Not Found\n");
+    } else {
+      var extension = filePath.split('.').splice(-1)[0];
 
-            res.writeHead(200, {
-                'Content-Type': mimeTypes[extension]
-            });
-            fs.createReadStream(filePath).pipe(res);
-        }
-    });
+      res.writeHead(200, {
+        'Content-Type': mimeTypes[extension]
+      });
+      fs.createReadStream(filePath).pipe(res);
+    }
+  });
 }
 
 app.on('listening', function() {
-    console.log('Monodify is waiting for commands on: http://localhost:' + app.address().port);
-    console.log('CTRL+C to quit.');
+  console.log('Monodify is waiting for commands on: http://localhost:' + app.address().port);
+  console.log('CTRL+C to quit.');
 
-    new MonodifyServer(io, spotify);
+  new MonodifyServer(io, spotify);
 });
 
 app.on('error', function(err) {
-    console.log('ERROR: ' + err.message);
-    console.log('Shutting down...');
-    process.exit(1);
+  console.log('ERROR: ' + err.message);
+  console.log('Shutting down...');
+  process.exit(1);
 });
 
 spotify.isRunning(function(err, isRunning) {
-    if (err || !isRunning) {
-        console.log('Could not launch monodify. Please make sure Spotify is running.');
-        return process.exit(1);
-    }
+  if (err || !isRunning) {
+    console.log('Could not launch monodify. Please make sure Spotify is running.');
+    return process.exit(1);
+  }
 
-    app.listen(process.env.PORT || 3333);
+  app.listen(process.env.PORT || 3333);
 });
