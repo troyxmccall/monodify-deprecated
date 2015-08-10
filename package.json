@@ -10,14 +10,14 @@
   },
   "dependencies": {
     "respawn": "^2.0.0",
-    "socket.io": "^0.9.17",
+    "socket.io": "^1.3.6",
     "spotify-node-applescript": "^0.2.2"
   },
   "devDependencies": {
-    "sinon": "~1.6.0",
-    "mocha": "~1.8.1",
+    "sinon": "~1.15.4",
+    "mocha": "~2.2.5",
     "grunt": "~0.4.0",
-    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-jshint": "~0.11.2",
     "grunt-simple-mocha": "~0.4.0"
   },
   "scripts": {
