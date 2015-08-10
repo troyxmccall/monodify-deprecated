@@ -28,7 +28,7 @@ $ git clone https://github.com/troyxmccall/monodify.git
 $ cd monodify
 $ npm install -g grunt-cli
 $ npm update
-$ sudo npm start
+$ npm start
 $ open http://localhost:3333
 ```
 
