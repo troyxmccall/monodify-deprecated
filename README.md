@@ -2,26 +2,16 @@ Monodify
 
 ## Synopsis
 
-Monodify allows you to control (pre-build 1.0) Spotify from a browser. Currently it works
+Monodify allows you to control Spotify from a browser. Currently it works
 by talking to Spotify via its AppleScript interface, so only OS X is supported
-at the moment. Any Spotify version after 0.9.15.27 will not work.
+at the moment. This branch supports Spotify versions 1.x. It is currently in alpha, so shit is gonna break
 
 ![Screenshot](http://i.imgur.com/puLukgj.png)
 
 ## Installation
 
-This assumes you already have Spotify installed
+This assumes you already have Spotify and Nodejs installed
 
-1. Install [Node.js](http://nodejs.org/)
-2. Close Spotify
-3. Lock Spotify from upgrading to that 1.0 + bullshit going forward (you might need to sudo su this)
-```
-$ rm -f ~/Library/Application\ Support/Spotify/Spotify_new.archive && touch ~/Library/Application\ Support/Spotify/Spotify_new.archive && chflags uchg ~/Library/Application\ Support/Spotify/Spotify_new.archive
-$ rm -f ~/Library/Application\ Support/Spotify/Spotify_new.archive.sig && touch ~/Library/Application\ Support/Spotify/Spotify_new.archive.sig && chflags uchg ~/Library/Application\ Support/Spotify/Spotify_new.archive.sig
-```
-4. Download the last 3rd party supported version [Spotify 0.9.15.27] (http://mac.filehorse.com/download-spotify/4704/)
-5. Replace your current version of Spotify with the old version
-6. Install this repo:
 
 ```
 $ git clone https://github.com/troyxmccall/monodify.git
@@ -37,6 +27,8 @@ To run jshint and the test suite, do the following:
 ```
 $ npm test
 ```
+
+
 
 
 ## License
