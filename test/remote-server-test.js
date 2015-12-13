@@ -1,14 +1,18 @@
 "use strict";
 
-var assert               = require('assert');
-var sinon                = require('sinon');
-var fs                   = require('fs');
-var MonodifyServer  = require('../lib/monodify_server');
+var assert = require('assert');
+var sinon = require('sinon');
+var fs = require('fs');
+var MonodifyServer = require('../lib/monodify_server');
 
 var originalReadFile = fs.readFile;
-var artworkBuffer    = new Buffer('artwork');
-var emitSpy          = sinon.spy();
-var io               = {sockets: {on: function(){}}};
+var artworkBuffer = new Buffer('artwork');
+var emitSpy = sinon.spy();
+var io = {
+  sockets: {
+    on: function() {}
+  }
+};
 var socket = {
   emit: emitSpy,
   events: {},
@@ -54,7 +58,9 @@ describe('MonodifyServer', function() {
 
   describe('#handleConnection', function() {
     it('sends the current track to the client', function() {
-      var track = {artist: 'Led Zeppelin'};
+      var track = {
+        artist: 'Led Zeppelin'
+      };
       spotify.getTrack.callsArgWith(0, null, track);
 
       server = new MonodifyServer(io, spotify);
@@ -64,7 +70,11 @@ describe('MonodifyServer', function() {
     });
 
     it('sends the current state to the client', function() {
-      var state = {volume: 100, position: 13.37, state: 'paused'};
+      var state = {
+        volume: 100,
+        position: 13.37,
+        state: 'paused'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
       server = new MonodifyServer(io, spotify);
@@ -74,7 +84,9 @@ describe('MonodifyServer', function() {
     });
 
     it('pushes the current state to the client every 500 ms', function() {
-      var state = {volume: 100};
+      var state = {
+        volume: 100
+      };
       spotify.getState.callsArgWith(0, null, state);
 
       server = new MonodifyServer(io, spotify);
@@ -97,14 +109,20 @@ describe('MonodifyServer', function() {
     });
 
     it('sends the current state on the sockets "volumeUp" event', function() {
-      var state = {volume: 100, position: 13.37, state: 'paused'};
+      var state = {
+        volume: 100,
+        position: 13.37,
+        state: 'paused'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
       server = new MonodifyServer(io, spotify);
       server.handleConnection(socket);
 
       var originalVolumeUp = spotify.volumeUp;
-      spotify.volumeUp = function(cb) { cb.call(server); };
+      spotify.volumeUp = function(cb) {
+        cb.call(server);
+      };
 
       socket.trigger('volumeUp');
 
@@ -114,14 +132,20 @@ describe('MonodifyServer', function() {
     });
 
     it('sends the current state on the sockets "volumeDown" event', function() {
-      var state = {volume: 100, position: 13.37, state: 'paused'};
+      var state = {
+        volume: 100,
+        position: 13.37,
+        state: 'paused'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
       server = new MonodifyServer(io, spotify);
       server.handleConnection(socket);
 
       var originalVolumeDown = spotify.volumeDown;
-      spotify.volumeDown = function(cb) { cb.call(server); };
+      spotify.volumeDown = function(cb) {
+        cb.call(server);
+      };
 
       socket.trigger('volumeDown');
 
@@ -131,16 +155,24 @@ describe('MonodifyServer', function() {
     });
 
     it('sends the current state with mute state on the sockets "muteUnmute" event', function() {
-      var state = {volume: 0, position: 13.37, state: 'paused'};
+      var state = {
+        volume: 0,
+        position: 13.37,
+        state: 'paused'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
       server = new MonodifyServer(io, spotify);
       server.handleConnection(socket);
 
-      var originalMuteVolume   = spotify.muteVolume;
+      var originalMuteVolume = spotify.muteVolume;
       var originalUnmuteVolume = spotify.unmuteVolume;
-      spotify.muteVolume = function(cb) { cb.call(server); };
-      spotify.unmuteVolume = function(cb) { cb.call(server); };
+      spotify.muteVolume = function(cb) {
+        cb.call(server);
+      };
+      spotify.unmuteVolume = function(cb) {
+        cb.call(server);
+      };
 
       socket.trigger('muteUnmute');
 
@@ -157,17 +189,25 @@ describe('MonodifyServer', function() {
     });
 
     it('sends the current state and track on the sockets "next" event', function() {
-      var state = {volume: 100, position: 13.37, state: 'paused'};
+      var state = {
+        volume: 100,
+        position: 13.37,
+        state: 'paused'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
-      var track = {artist: 'Led Zeppelin'};
+      var track = {
+        artist: 'Led Zeppelin'
+      };
       spotify.getTrack.callsArgWith(0, null, track);
 
       server = new MonodifyServer(io, spotify);
       server.handleConnection(socket);
 
       var originalNext = spotify.next;
-      spotify.next = function(cb) { cb.call(server); };
+      spotify.next = function(cb) {
+        cb.call(server);
+      };
 
       socket.trigger('next');
 
@@ -178,17 +218,25 @@ describe('MonodifyServer', function() {
     });
 
     it('sends the current state and track on the sockets "previous" event', function() {
-      var state = {volume: 100, position: 13.37, state: 'paused'};
+      var state = {
+        volume: 100,
+        position: 13.37,
+        state: 'paused'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
-      var track = {artist: 'Led Zeppelin'};
+      var track = {
+        artist: 'Led Zeppelin'
+      };
       spotify.getTrack.callsArgWith(0, null, track);
 
       server = new MonodifyServer(io, spotify);
       server.handleConnection(socket);
 
       var originalPrevious = spotify.previous;
-      spotify.previous = function(cb) { cb.call(server); };
+      spotify.previous = function(cb) {
+        cb.call(server);
+      };
 
       socket.trigger('previous');
 
@@ -199,17 +247,25 @@ describe('MonodifyServer', function() {
     });
 
     it('sends the current state and track on the sockets "playPause" event', function() {
-      var state = {volume: 100, position: 13.37, state: 'paused'};
+      var state = {
+        volume: 100,
+        position: 13.37,
+        state: 'paused'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
-      var track = {artist: 'Led Zeppelin'};
+      var track = {
+        artist: 'Led Zeppelin'
+      };
       spotify.getTrack.callsArgWith(0, null, track);
 
       server = new MonodifyServer(io, spotify);
       server.handleConnection(socket);
 
       var originalPlayPause = spotify.playPause;
-      spotify.playPause = function(cb) { cb.call(server); };
+      spotify.playPause = function(cb) {
+        cb.call(server);
+      };
 
       socket.trigger('playPause');
 
@@ -222,10 +278,14 @@ describe('MonodifyServer', function() {
 
   describe('#getCurrentState', function() {
     it('only gets the track once when it has not changed', function() {
-      var state = {track_id: 'spotify:track:1'};
+      var state = {
+        track_id: 'spotify:track:1'
+      };
       spotify.getState.callsArgWith(0, null, state);
 
-      var track = {id: 'spotify:track:1'};
+      var track = {
+        id: 'spotify:track:1'
+      };
       spotify.getTrack.callsArgWith(0, null, track);
 
       server = new MonodifyServer(io, spotify);
@@ -239,10 +299,14 @@ describe('MonodifyServer', function() {
       var calls = 0;
 
       spotify.getState = function(cb) {
-        cb(null, {track_id: 'spotify:track:' + calls++});
+        cb(null, {
+          track_id: 'spotify:track:' + calls++
+        });
       };
 
-      var track = {id: 'spotify:track:0'};
+      var track = {
+        id: 'spotify:track:0'
+      };
       spotify.getTrack.callsArgWith(0, null, track);
 
       server = new MonodifyServer(io, spotify);
@@ -329,7 +393,10 @@ describe('MonodifyServer', function() {
 
       emitSpy.reset();
 
-      server.handleConnection({emit: function() {}, on: function(){}});
+      server.handleConnection({
+        emit: function() {},
+        on: function() {}
+      });
 
       assert(emitSpy.notCalled);
     });
@@ -351,7 +418,7 @@ describe('MonodifyServer', function() {
       server = new MonodifyServer(io, spotify);
       var fn = sinon.spy();
 
-      for(var i = 0; i < 6; i++) {
+      for (var i = 0; i < 6; i++) {
         server.retry(fn, 10);
       }
 
@@ -364,7 +431,7 @@ describe('MonodifyServer', function() {
       server = new MonodifyServer(io, spotify);
       var fn = sinon.spy();
 
-      for(var i = 0; i < 6; i++) {
+      for (var i = 0; i < 6; i++) {
         server.retry(fn, 10);
       }
 
