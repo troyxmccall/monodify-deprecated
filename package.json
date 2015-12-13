@@ -11,7 +11,7 @@
   "dependencies": {
     "forever": "^0.15.1",
     "socket.io": "^0.9.17",
-    "spotify-node-applescript": "git://github.com/troyxmccall/spotify-node-applescript.git#master"
+    "spotify-node-applescript": "github:troyxmccall/spotify-node-applescript#v0.2.4"
   },
   "devDependencies": {
     "sinon": "~1.6.0",
