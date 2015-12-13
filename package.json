@@ -1,36 +1,36 @@
 {
-	"name": "monodify",
-	"preferGlobal": true,
-	"version": "0.0.2",
-	"description": "Control spotify from your browser or mobile device",
-	"main": "app.js",
-	"bin": "./app.js",
-	"directories": {
-		"test": "test"
-	},
-	"dependencies": {
-		"forever": "^0.15.1",
-		"socket.io": "^0.9.17",
-		"spotify-node-applescript": "^0.2.2"
-	},
-	"devDependencies": {
-		"sinon": "~1.6.0",
-		"mocha": "~1.8.1",
-		"grunt": "~0.4.0",
-		"grunt-contrib-jshint": "~0.2.0",
-		"grunt-simple-mocha": "~0.4.0"
-	},
-	"scripts": {
-		"start": "node app",
-		"test": "grunt"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/troyxmccall/monodify.git"
-	},
-	"license": "MIT",
-	"readmeFilename": "README.md",
-	"engines": {
-		"node": ">=0.8"
-	}
+  "name": "monodify",
+  "preferGlobal": true,
+  "version": "0.0.2",
+  "description": "Control spotify from your browser or mobile device",
+  "main": "app.js",
+  "bin": "./app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "forever": "^0.15.1",
+    "socket.io": "^0.9.17",
+    "spotify-node-applescript": "git://github.com/troyxmccall/spotify-node-applescript.git#master"
+  },
+  "devDependencies": {
+    "sinon": "~1.6.0",
+    "mocha": "~1.8.1",
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-simple-mocha": "~0.4.0"
+  },
+  "scripts": {
+    "start": "node app",
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/troyxmccall/monodify.git"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "engines": {
+    "node": ">=0.8"
+  }
 }
