@@ -49,8 +49,8 @@ app.on('listening', function() {
 
 app.on('error', function(err) {
   console.log('ERROR: ' + err.message);
-  console.log('Shutting down...');
-  process.exit(1);
+  // console.log('Shutting down...');
+  // process.exit(1);
 });
 
 spotify.isRunning(function(err, isRunning) {

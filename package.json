@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "forever": "^0.15.1",
+    "request": "^2.67.0",
     "socket.io": "^0.9.17",
-    "spotify-node-applescript": "github:troyxmccall/spotify-node-applescript#v0.2.4"
+    "spotify-node-applescript": "github:troyxmccall/spotify-node-applescript#v0.2.5"
   },
   "devDependencies": {
     "sinon": "~1.6.0",
